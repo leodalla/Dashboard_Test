@@ -98,10 +98,10 @@ with st.sidebar:
         horizontal=True,key="Scenario")
     years_filter = st.radio(label="Years Selection",options=["2030", "2040", "2050"],
         horizontal=True,key="years")
-    ev_percent = st.slider("Percentage of households charging EV", 0.0, 20.0, 2.5, step=0.5)
-    max_loading = st.slider("Max Loading Limit", 50, 200, 100, step=5)
-    min_voltage = st.slider("Min Voltage Limit", 0.7, 1.0, 0.9, step=0.01)
-    max_voltage = st.slider("Max Voltage Limit", 1.0, 1.2, 1.05, step=0.01)
+    ev_percent = st.slider("Percentage of households (0-20)", 0.0, 20.0, 2.5, step=0.5)
+    max_loading = st.slider("Filter 1", 50, 200, 100, step=5)
+    min_voltage = st.slider("Filter 2", 0.7, 1.0, 0.9, step=0.01)
+    max_voltage = st.slider("Filter 3", 1.0, 1.2, 1.05, step=0.01)
 
 # =========================
 # KPI Tiles
@@ -144,11 +144,11 @@ for size in row_sizes:
 
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.plotly_chart(random_boxplot("Max Loading", "Max Loading [%]"), use_container_width=True)
+    st.plotly_chart(random_boxplot("Box Plot 1", "Percentage [%]"), use_container_width=True)
 with c2:
-    st.plotly_chart(random_boxplot("Max Voltage", "Max Voltage [p.u.]"), use_container_width=True)
+    st.plotly_chart(random_boxplot("Box Plot 2", "Unit [p.u.]"), use_container_width=True)
 with c3:
-    st.plotly_chart(random_pie("Min Voltage"), use_container_width=True)
+    st.plotly_chart(random_pie("Pie Chart"), use_container_width=True)
 
 # =========================
 # Bottom row: two spaces for bar charts or images
@@ -156,12 +156,12 @@ with c3:
 
 b1, b2 = st.columns(2)
 with b1:
-    st.subheader("Most Severe Anomalies (placeholder)")
-    st.plotly_chart(random_bar("Anomaly Severity"), use_container_width=True)
+    st.subheader("Placeholder Graph 1)")
+    st.plotly_chart(random_bar("Graph 1"), use_container_width=True)
     # To use an image instead later:
     # st.image("path/to/image1.png", use_container_width=True)
 with b2:
-    st.subheader("Most Violated Elements (placeholder)")
-    st.plotly_chart(random_bar("Violation Count (norm.)"), use_container_width=True)
+    st.subheader("Placeholder Graph 2")
+    st.plotly_chart(random_bar("Graph 2"), use_container_width=True)
     # To use an image instead later:
     # st.image("path/to/image2.png", use_container_width=True)
