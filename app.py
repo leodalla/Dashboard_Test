@@ -100,7 +100,7 @@ with st.sidebar:
 # KPI Tiles
 # =========================
 
-kpi_path="data/Kpi_data.csv"
+kpi_path="Kpi_data.csv"
 
 kpi_data=load_kpi_from_csv(kpi_path, scenarios_filter, years_filter)
 
