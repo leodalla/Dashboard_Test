@@ -37,3 +37,32 @@ def random_bar(title: str, n: int = 5):
         margin=dict(t=50, r=20, l=20, b=40)
     )
     return fig
+
+def random_pie(title: str, n: int = 5):
+    """Return a Plotly pie chart figure with random data."""
+    rng = np.random.default_rng(7)
+    items = [f"Cat {i}" for i in range(1, n+1)]
+    vals = rng.uniform(1, 10, size=n)  # make sure values are positive
+
+    df = pd.DataFrame({"Category": items, "Value": vals})
+
+    fig = px.pie(
+        df,
+        names="Category",
+        values="Value",
+        title=title,
+        hole=0.3,  # donut style; remove if you want a full pie
+    )
+
+    fig.update_traces(textinfo="percent+label", textfont_size=14)
+
+    fig.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="white"),
+        height=520,
+        margin=dict(t=50, r=20, l=20, b=40),
+        showlegend=True,
+    )
+
+    return fig

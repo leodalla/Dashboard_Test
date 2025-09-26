@@ -4,7 +4,7 @@ IRENA-style dashboard (test version with random plots)
 Author: @Leonardo Dalla Riva
 """
 import streamlit as st
-from charts import random_boxplot, random_bar 
+from charts import random_boxplot, random_bar, random_pie 
 from kpi import load_kpi_from_csv
 import pandas as pd
 import numpy as np
@@ -55,7 +55,7 @@ section[data-testid="stSidebar"] h1 {
     font-size: 38px !important;
 }
 
-/* 1) The widget label above the radio (e.g., "Scenario Selection") */
+/The widget label above the radio (e.g., "Scenario Selection") */
 section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] > div,
 section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
   font-size: 18px !important;      /* adjust size */
@@ -110,20 +110,33 @@ with st.sidebar:
 kpi_path="Kpi_data.csv"
 
 kpi_data=load_kpi_from_csv(kpi_path, scenarios_filter, years_filter)
+n = len(kpi_data)
+max_per_row=4
 
-per_row=4
-
-for start in range(0, len(kpi_data), per_row):
-    row_items = kpi_data[start:start+per_row]
-    cols = st.columns(len(row_items))
-    for col, item in zip(cols, row_items):
+# if number divides evenly, just split by max_per_row
+if n % max_per_row == 0:
+    row_sizes = [max_per_row] * (n // max_per_row)
+else:
+    # otherwise: fill first row to max_per_row,
+    # and put the rest into the second row
+    if n > max_per_row:
+        row_sizes = [max_per_row, n - max_per_row]
+    else:
+        # if fewer than max_per_row, all in one row
+        row_sizes = [n]
+idx=0
+for size in row_sizes:
+    cols = st.columns(size)
+    for col in cols:
+        item = kpi_data[idx]
         with col:
             st.markdown(f"""
             <div class="kpi">
-              <h3>{item['kpi']}</h3>
-              <div class="val">{item['value']}</div>
+                <h3>{item['kpi']}</h3>
+                <div class="val">{item['value']}</div>
             </div>
             """, unsafe_allow_html=True)
+        idx += 1
 
 # =========================
 # Random Test Plots
@@ -135,7 +148,7 @@ with c1:
 with c2:
     st.plotly_chart(random_boxplot("Max Voltage", "Max Voltage [p.u.]"), use_container_width=True)
 with c3:
-    st.plotly_chart(random_boxplot("Min Voltage", "Min Voltage [p.u.]"), use_container_width=True)
+    st.plotly_chart(random_pie("Min Voltage"), use_container_width=True)
 
 # =========================
 # Bottom row: two spaces for bar charts or images

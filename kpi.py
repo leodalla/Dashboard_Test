@@ -28,7 +28,14 @@ def load_kpi_from_csv(file_or_path,scenario=None, year=None):
     if year_col is not None and year is not None:
         df = df[df[year_col].astype(str) == str(year)]
 
-    # build result
-    out = [{"kpi": str(r[k_col]).strip(), "value": str(r[v_col]).strip()}
-           for _, r in df[[k_col, v_col]].iterrows()]
+    # build result with value rounded to 1 decimal
+    out = []
+    for _, r in df[[k_col, v_col]].iterrows():
+        try:
+            val = float(r[v_col])
+            val = f"{val:.1f}"   # format to 1 decimal place
+        except (ValueError, TypeError):
+            val = str(r[v_col]).strip()  # fallback if not numeric
+        out.append({"kpi": str(r[k_col]).strip(), "value": val})
+        
     return out
