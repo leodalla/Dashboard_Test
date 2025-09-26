@@ -66,8 +66,15 @@ section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
 .kpi {
   background: #2b3b4d; border-radius: 12px; padding: 16px 16px; color: #fff;
   border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+  height:120px;                   /* fixed tile height */
+  display:flex; flex-direction:column; justify-content:center;
+  text-align:left;
+  margin-bottom: 16px;
 }
-.kpi h3 { font-size: 16px; font-weight: 600; margin: 0 0 6px 0; color:#d9e2ec;}
+.kpi h3 { font-size: 16px; font-weight: 600; margin: 0 0 6px 0; color:#d9e2ec;
+  /* clamp to 2 lines so long titles don't push height */
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+  overflow:hidden;}
 .kpi .val { font-size: 28px; font-weight: 800; line-height: 1.1; }
 .kpi .sub { font-size: 12px; opacity: .8; }
 
@@ -104,15 +111,19 @@ kpi_path="Kpi_data.csv"
 
 kpi_data=load_kpi_from_csv(kpi_path, scenarios_filter, years_filter)
 
-cols = st.columns(len(kpi_data))
-for i, item in enumerate(kpi_data):
-    with cols[i]:
-        st.markdown(f"""
-        <div class="kpi">
-            <h3>{item['kpi']}</h3>
-            <div class="val">{item['value']}</div>
-        </div>
-        """, unsafe_allow_html=True)
+per_row=4
+
+for start in range(0, len(kpi_data), per_row):
+    row_items = kpi_data[start:start+per_row]
+    cols = st.columns(len(row_items))
+    for col, item in zip(cols, row_items):
+        with col:
+            st.markdown(f"""
+            <div class="kpi">
+              <h3>{item['kpi']}</h3>
+              <div class="val">{item['value']}</div>
+            </div>
+            """, unsafe_allow_html=True)
 
 # =========================
 # Random Test Plots
