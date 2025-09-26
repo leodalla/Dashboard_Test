@@ -1,0 +1,13 @@
+# Core
+streamlit>=1.33,<2
+pandas>=2.2
+numpy>=1.26
+
+# Charts
+plotly>=5.22
+
+# Excel support (keep even if you currently use CSV)
+openpyxl>=3.1
+
+# If you load images via PIL (optional)
+Pillow>=10.0
