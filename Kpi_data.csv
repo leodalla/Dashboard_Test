@@ -1,0 +1,64 @@
+﻿Scenario,Year,Kpi,value
+PES,2030,Installed kW / Operating kW,28.08
+PES,2030,Non-Convergent Iteration Count,0
+PES,2030,Total Probability of Success %,99
+PES,2030,Probability of Overload %,1
+PES,2030,Voltage Violations,0
+PES,2030,Impact on Line Assets %,1.75
+PES,2030,Impacted Lines,4
+PES,2040,Installed kW / Operating kW,33.696
+PES,2040,Non-Convergent Iteration Count,0
+PES,2040,Total Probability of Success %,118.8
+PES,2040,Probability of Overload %,1.2
+PES,2040,Voltage Violations,0
+PES,2040,Impact on Line Assets %,2.1
+PES,2040,Impacted Lines,4.8
+PES,2050,Installed kW / Operating kW,40.4352
+PES,2050,Non-Convergent Iteration Count,0
+PES,2050,Total Probability of Success %,142.56
+PES,2050,Probability of Overload %,1.44
+PES,2050,Voltage Violations,0
+PES,2050,Impact on Line Assets %,2.52
+PES,2050,Impacted Lines,5.76
+TES,2030,Installed kW / Operating kW,48.52224
+TES,2030,Non-Convergent Iteration Count,0
+TES,2030,Total Probability of Success %,171.072
+TES,2030,Probability of Overload %,1.728
+TES,2030,Voltage Violations,0
+TES,2030,Impact on Line Assets %,3.024
+TES,2030,Impacted Lines,6.912
+TES,2040,Installed kW / Operating kW,58.226688
+TES,2040,Non-Convergent Iteration Count,0
+TES,2040,Total Probability of Success %,205.2864
+TES,2040,Probability of Overload %,2.0736
+TES,2040,Voltage Violations,0
+TES,2040,Impact on Line Assets %,3.6288
+TES,2040,Impacted Lines,8.2944
+TES,2050,Installed kW / Operating kW,69.8720256
+TES,2050,Non-Convergent Iteration Count,0
+TES,2050,Total Probability of Success %,246.34368
+TES,2050,Probability of Overload %,2.48832
+TES,2050,Voltage Violations,0
+TES,2050,Impact on Line Assets %,4.35456
+TES,2050,Impacted Lines,9.95328
+DES,2030,Installed kW / Operating kW,83.84643072
+DES,2030,Non-Convergent Iteration Count,0
+DES,2030,Total Probability of Success %,295.612416
+DES,2030,Probability of Overload %,2.985984
+DES,2030,Voltage Violations,0
+DES,2030,Impact on Line Assets %,5.225472
+DES,2030,Impacted Lines,11.943936
+DES,2040,Installed kW / Operating kW,100.6157169
+DES,2040,Non-Convergent Iteration Count,0
+DES,2040,Total Probability of Success %,354.7348992
+DES,2040,Probability of Overload %,3.5831808
+DES,2040,Voltage Violations,0
+DES,2040,Impact on Line Assets %,6.2705664
+DES,2040,Impacted Lines,14.3327232
+DES,2050,Installed kW / Operating kW,120.7388602
+DES,2050,Non-Convergent Iteration Count,0
+DES,2050,Total Probability of Success %,425.681879
+DES,2050,Probability of Overload %,4.29981696
+DES,2050,Voltage Violations,0
+DES,2050,Impact on Line Assets %,7.52467968
+DES,2050,Impacted Lines,17.19926784
